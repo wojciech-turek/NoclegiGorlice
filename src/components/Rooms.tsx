@@ -9,7 +9,25 @@ type Props = {
   description: string;
 };
 
+const roomTypes = [
+  { name: "Pokoje 1-osobowe", value: 1 },
+  { name: "Pokoje 2-osobowe", value: 2 },
+  { name: "Pokoje 3-osobowe", value: 3 },
+  { name: "Pokoje 4-osobowe", value: 4 },
+];
+
 const Rooms = ({ rooms, description }: Props) => {
+  const [roomFilter, setRoomFilter] = React.useState<number | null>(null);
+
+  const filteredRooms = rooms.filter((room) => {
+    if (roomFilter === null) {
+      return true;
+    }
+    return room.maxGuests === roomFilter;
+  });
+
+  if (!rooms.length) return null;
+
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl py-24 px-4 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
@@ -18,9 +36,30 @@ const Rooms = ({ rooms, description }: Props) => {
             Pokoje
           </h2>
           <p className="mt-4 text-gray-500">{description}</p>
+          <div className="mt-4 flex gap-4 items-center justify-center">
+            {roomTypes.map((roomType) => {
+              return (
+                <button
+                  type="button"
+                  key={roomType.value}
+                  onClick={() => {
+                    setRoomFilter(roomType.value);
+                  }}
+                  className={classNames(
+                    roomType.value === roomFilter
+                      ? "bg-indigo-500 text-white shadow"
+                      : "bg-white text-gray-700",
+                    "inline-flex items-center rounded-md border border-gray-300  px-3 py-2 text-sm font-medium leading-4 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  )}
+                >
+                  {roomType.name}
+                </button>
+              );
+            })}
+          </div>
         </div>
         <div className="mt-16 space-y-16">
-          {rooms.map((room, roomIdx) => (
+          {filteredRooms.map((room, roomIdx) => (
             <div
               key={room.name}
               className="flex flex-col-reverse lg:grid lg:grid-cols-12 lg:items-center lg:gap-x-8"
@@ -39,13 +78,35 @@ const Rooms = ({ rooms, description }: Props) => {
                 <p className="mt-2  text-gray-500">{room.description}</p>
                 <div className="text-gray-500 text-sm mt-6">
                   <p>
-                    <span className="font-semibold">Lokalizacja:</span>{" "}
+                    <span className="font-semibold text-yellow-700">
+                      Lokalizacja:
+                    </span>{" "}
                     <span>{room.location}</span>
                   </p>
-                </div>
-                <div className="text-gray-500 text-sm">
-                  <span className="font-semibold">Cechy: </span>
-                  {room.attributes.join(", ")}
+                  <p>
+                    <span className="font-semibold text-yellow-700">
+                      Ilość łóżek:
+                    </span>{" "}
+                    <span>{room.bedCount}</span>
+                  </p>
+                  <p>
+                    <span className="font-semibold text-yellow-700">
+                      Rodzaj łóżek:
+                    </span>{" "}
+                    <span>{room.bedType}</span>
+                  </p>
+                  <p>
+                    <span className="font-semibold text-yellow-700">
+                      Maksymalna ilość gości:
+                    </span>{" "}
+                    <span>{room.maxGuests}</span>
+                  </p>
+                  <p>
+                    <span className="font-semibold text-yellow-700">
+                      Wyposażenie:{" "}
+                    </span>
+                    {room.equipment.join(", ")}
+                  </p>
                 </div>
               </div>
               <div

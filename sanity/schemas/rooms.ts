@@ -21,8 +21,34 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'attributes',
-      title: 'Atrybuty',
+      name: 'price',
+      title: 'Cena za noc od osoby',
+      type: 'number',
+    }),
+    defineField({
+      name: 'bedCount',
+      title: 'Liczba łóżek',
+      type: 'number',
+    }),
+    defineField({
+      name: 'bedType',
+      title: 'Rodzaj łóżek',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Pojedyncze', value: 'Pojedyncze'},
+          {title: 'Podwójne', value: 'Podwójne'},
+        ],
+      },
+    }),
+    defineField({
+      name: 'maxGuests',
+      title: 'Maksymalna liczba gości',
+      type: 'number',
+    }),
+    defineField({
+      name: 'equipment',
+      title: 'Wyposażenie Pokoju',
       type: 'array',
       of: [
         {

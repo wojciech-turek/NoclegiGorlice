@@ -10,8 +10,11 @@ export interface Room extends SanityBody {
   name: string;
   description: string;
   price: number;
+  bedCount: number;
+  bedType: string;
+  maxGuests: number;
   location: string;
-  attributes: string[];
+  equipment: string[];
   images: Image[];
 }
 
@@ -37,12 +40,6 @@ export interface PageInfo extends SanityBody {
   phoneNumber: string;
   email: string;
   contactInfo: string;
-  addressData: {
-    street: string;
-    city: string;
-    zipCode: string;
-    country: string;
-  };
 }
 
 export interface Attraction extends SanityBody {
