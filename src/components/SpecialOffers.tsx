@@ -9,6 +9,7 @@ type Props = {
 };
 
 const SpecialOffers = ({ offers, description }: Props) => {
+  if (!offers.length) return null;
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-7xl py-12 px-6 lg:px-8 lg:py-24">
