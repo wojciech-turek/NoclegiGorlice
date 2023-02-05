@@ -14,8 +14,9 @@ const center = {
 type Props = {};
 
 const Map = (props: Props) => {
+  if (!process.env.NEXT_PUBLIC_MAPS_API_KEY) throw new Error("Missing API key");
   return (
-    <LoadScript googleMapsApiKey="AIzaSyBN95hIP3l3xDuZH_-0WPMEHH6INWaD-m4">
+    <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_MAPS_API_KEY}>
       <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={15}>
         {/* Child components, such as markers, info windows, etc. */}
         <Marker position={center} />
