@@ -5,6 +5,8 @@ It was made for a small turism business in Lesser Poland.
 
 A side fun project.
 
+Live at https://noclegigorlice.pl
+
 ## What was used
 
 - Next.js 13
