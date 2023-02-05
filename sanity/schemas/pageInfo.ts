@@ -1,4 +1,3 @@
-import {group} from 'console'
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
@@ -72,33 +71,6 @@ export default defineType({
       name: 'offersDescription',
       title: 'Opis ofert',
       type: 'text',
-    }),
-    defineField({
-      name: 'addressData',
-      title: 'Dane Adresowe',
-      type: 'object',
-      fields: [
-        defineField({
-          name: 'street',
-          title: 'Ulica',
-          type: 'string',
-        }),
-        defineField({
-          name: 'city',
-          title: 'Miasto',
-          type: 'string',
-        }),
-        defineField({
-          name: 'zipCode',
-          title: 'Kod Pocztowy',
-          type: 'string',
-        }),
-        defineField({
-          name: 'country',
-          title: 'Kraj',
-          type: 'string',
-        }),
-      ],
     }),
   ],
 })

@@ -8,7 +8,7 @@ type Props = {
 };
 
 const ContactForm = ({ pageInfo }: Props) => {
-  const { addressData, contactInfo, phoneNumber, email } = pageInfo;
+  const { contactInfo, phoneNumber, email } = pageInfo;
   return (
     <div className="relative bg-white">
       <div className="absolute inset-0">
@@ -24,16 +24,6 @@ const ContactForm = ({ pageInfo }: Props) => {
               {contactInfo}
             </p>
             <dl className="mt-8 text-base text-gray-500">
-              <div>
-                <dt className="sr-only">Adres pocztowy</dt>
-                <dd>
-                  <p>{addressData.street}</p>
-                  <p>
-                    {addressData.zipCode}, {addressData.city}
-                  </p>
-                  <p>{addressData.country}</p>
-                </dd>
-              </div>
               <div className="mt-6">
                 <dt className="sr-only">Numer telefonu</dt>
                 <dd className="flex">
