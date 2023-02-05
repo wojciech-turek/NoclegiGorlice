@@ -1,10 +1,14 @@
 import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
 import React from "react";
+import { PageInfo } from "types/types";
 import Map from "./Map";
 
-type Props = {};
+type Props = {
+  pageInfo: PageInfo;
+};
 
-const ContactForm = (props: Props) => {
+const ContactForm = ({ pageInfo }: Props) => {
+  const { addressData, contactInfo, phoneNumber, email } = pageInfo;
   return (
     <div className="relative bg-white">
       <div className="absolute inset-0">
@@ -17,25 +21,27 @@ const ContactForm = (props: Props) => {
               Skontaktuj się z nami
             </h2>
             <p className="mt-3 text-lg leading-6 text-gray-500">
-              Nullam risus blandit ac aliquam justo ipsum. Quam mauris volutpat
-              massa dictumst amet. Sapien tortor lacus arcu.
+              {contactInfo}
             </p>
             <dl className="mt-8 text-base text-gray-500">
               <div>
-                <dt className="sr-only">Postal address</dt>
+                <dt className="sr-only">Adres pocztowy</dt>
                 <dd>
-                  <p>742 Evergreen Terrace</p>
-                  <p>Springfield, OR 12345</p>
+                  <p>{addressData.street}</p>
+                  <p>
+                    {addressData.zipCode}, {addressData.city}
+                  </p>
+                  <p>{addressData.country}</p>
                 </dd>
               </div>
               <div className="mt-6">
-                <dt className="sr-only">Phone number</dt>
+                <dt className="sr-only">Numer telefonu</dt>
                 <dd className="flex">
                   <PhoneIcon
                     className="h-6 w-6 flex-shrink-0 text-gray-400"
                     aria-hidden="true"
                   />
-                  <span className="ml-3">+1 (555) 123-4567</span>
+                  <span className="ml-3">{phoneNumber}</span>
                 </dd>
               </div>
               <div className="mt-3">
@@ -45,17 +51,10 @@ const ContactForm = (props: Props) => {
                     className="h-6 w-6 flex-shrink-0 text-gray-400"
                     aria-hidden="true"
                   />
-                  <span className="ml-3">support@example.com</span>
+                  <span className="ml-3">{email}</span>
                 </dd>
               </div>
             </dl>
-            <p className="mt-6 text-base text-gray-500">
-              Looking for careers?{" "}
-              <a href="#" className="font-medium text-gray-700 underline">
-                View all job openings
-              </a>
-              .
-            </p>
           </div>
         </div>
         <div className="bg-white py-16 px-6 lg:col-span-3 lg:py-24 lg:px-8 xl:pl-12">
@@ -63,7 +62,7 @@ const ContactForm = (props: Props) => {
             <form action="#" method="POST" className="grid grid-cols-1 gap-y-6">
               <div>
                 <label htmlFor="full-name" className="sr-only">
-                  Full name
+                  Imię i nazwisko
                 </label>
                 <input
                   type="text"
@@ -71,7 +70,7 @@ const ContactForm = (props: Props) => {
                   id="full-name"
                   autoComplete="name"
                   className="block w-full rounded-md border-gray-300 py-3 px-4 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                  placeholder="Full name"
+                  placeholder="Imię i nazwisko"
                 />
               </div>
               <div>
@@ -97,7 +96,7 @@ const ContactForm = (props: Props) => {
                   id="phone"
                   autoComplete="tel"
                   className="block w-full rounded-md border-gray-300 py-3 px-4 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                  placeholder="Phone"
+                  placeholder="Telefon"
                 />
               </div>
               <div>
@@ -109,7 +108,7 @@ const ContactForm = (props: Props) => {
                   name="message"
                   rows={4}
                   className="block w-full rounded-md border-gray-300 py-3 px-4 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                  placeholder="Message"
+                  placeholder="Waidomość"
                   defaultValue={""}
                 />
               </div>

@@ -4,17 +4,16 @@ import { Dialog } from "@headlessui/react";
 import Image from "next/image";
 import Link from "next/link";
 
-type Props = {};
-
 const navigation = [
   { name: "O nas", href: "#hero" },
   { name: "Atrakcje", href: "#attractions" },
   { name: "Pokoje", href: "#rooms" },
+  { name: "Opinie", href: "#reviews" },
   { name: "Oferty", href: "#specialOffers" },
   { name: "Kontakt", href: "#contact" },
 ];
 
-const Header = (props: Props) => {
+const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
     <div className="bg-white sticky top-0 z-20">
@@ -25,14 +24,10 @@ const Header = (props: Props) => {
             aria-label="Global"
           >
             <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
-              <Image
-                alt="Your Company"
-                className="h-8 w-auto"
-                height={32}
-                width={32}
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-              />
+              <span className="sr-only">Noclegi u Uli</span>
+              <div className="text-2xl font-bold tracking-tight text-yellow-500">
+                Noclegi u Uli
+              </div>
             </a>
             <button
               type="button"

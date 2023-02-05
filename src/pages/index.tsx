@@ -2,7 +2,7 @@ import Head from "next/head";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import { GetStaticProps } from "next";
-import { PageInfo } from "types/types";
+import { Attraction, Offer, PageInfo, Room } from "types/types";
 import { fetchPageInfo } from "@/utils/fetchPageInfo";
 import Attractions from "@/components/Attractions";
 import About from "@/components/About";
@@ -10,12 +10,19 @@ import ContactForm from "@/components/ContactForm";
 import SpecialOffers from "@/components/SpecialOffers";
 import Footer from "@/components/Footer";
 import Rooms from "@/components/Rooms";
+import { fetchAttractions } from "@/utils/fetchAttractions";
+import { fetchRooms } from "@/utils/fetchRooms";
+import { fetchOffers } from "@/utils/fetchOffers";
+import Testimonials from "@/components/Testimonials";
 
 type Props = {
   pageInfo: PageInfo;
+  attractions: Attraction[];
+  rooms: Room[];
+  offers: Offer[];
 };
 
-export default function Home({ pageInfo }: Props) {
+export default function Home({ pageInfo, attractions, rooms, offers }: Props) {
   return (
     <div className="z-0">
       <Head>
@@ -29,22 +36,31 @@ export default function Home({ pageInfo }: Props) {
       <Header />
       <main>
         <section id="hero">
-          <Hero info={pageInfo} />
+          <Hero pageInfo={pageInfo} />
         </section>
         <section id="about">
-          <About />
+          <About pageInfo={pageInfo} />
         </section>
         <section id="attractions">
-          <Attractions />
+          <Attractions
+            description={pageInfo.attractionsDescription}
+            attractions={attractions}
+          />
         </section>
         <section id="rooms">
-          <Rooms />
+          <Rooms description={pageInfo.roomsDescription} rooms={rooms} />
+        </section>
+        <section id="reviews">
+          <Testimonials />
         </section>
         <section id="specialOffers">
-          <SpecialOffers />
+          <SpecialOffers
+            offers={offers}
+            description={pageInfo.offersDescription}
+          />
         </section>
         <section id="contact">
-          <ContactForm />
+          <ContactForm pageInfo={pageInfo} />
         </section>
       </main>
       <Footer />
@@ -54,9 +70,15 @@ export default function Home({ pageInfo }: Props) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const pageInfo = await fetchPageInfo();
+  const attractions = await fetchAttractions();
+  const rooms = await fetchRooms();
+  const offers = await fetchOffers();
   return {
     props: {
       pageInfo,
+      attractions,
+      rooms,
+      offers,
     },
     revalidate: 60,
   };

@@ -6,9 +6,42 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'title',
-      title: 'Tytul',
+      name: 'name',
+      title: 'Nazwa Pokoju',
       type: 'string',
+    }),
+    defineField({
+      name: 'description',
+      title: 'Opis Pokoju',
+      type: 'text',
+    }),
+    defineField({
+      name: 'location',
+      title: 'Lokalizacja',
+      type: 'string',
+    }),
+    defineField({
+      name: 'attributes',
+      title: 'Atrybuty',
+      type: 'array',
+      of: [
+        {
+          type: 'string',
+        },
+      ],
+    }),
+    defineField({
+      name: 'images',
+      title: 'Zdjęcia',
+      type: 'array',
+      of: [
+        {
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+        },
+      ],
     }),
   ],
 })

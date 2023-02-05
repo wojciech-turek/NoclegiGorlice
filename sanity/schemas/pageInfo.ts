@@ -3,7 +3,7 @@ import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'pageInfo',
-  title: 'PageInfo',
+  title: 'Dane Główne',
   type: 'document',
   fields: [
     defineField({
@@ -27,7 +27,7 @@ export default defineType({
     }),
     defineField({
       name: 'description',
-      title: 'Opis Strony',
+      title: 'Opis pod nagłówkiem',
       type: 'text',
     }),
     defineField({
@@ -44,6 +44,16 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'attractionsDescription',
+      title: 'Opis atrakcji',
+      type: 'text',
+    }),
+    defineField({
+      name: 'roomsDescription',
+      title: 'Opis pokoi',
+      type: 'text',
+    }),
+    defineField({
       name: 'phoneNumber',
       title: 'Numer Telefonu',
       type: 'string',
@@ -52,6 +62,16 @@ export default defineType({
       name: 'email',
       title: 'Adres Email',
       type: 'string',
+    }),
+    defineField({
+      name: 'contactInfo',
+      title: 'Zaproszenie do kontaktu',
+      type: 'string',
+    }),
+    defineField({
+      name: 'offersDescription',
+      title: 'Opis ofert',
+      type: 'text',
     }),
     defineField({
       name: 'addressData',
