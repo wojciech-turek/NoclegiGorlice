@@ -34,7 +34,7 @@ const SpecialOffers = ({ offers, description }: Props) => {
                     <div className="aspect-w-3 aspect-h-2">
                       <Image
                         className="rounded-lg object-cover shadow-lg"
-                        src={urlFor(offer.image).url()}
+                        src={offer.image ? urlFor(offer.image).url() : ""}
                         width={400}
                         height={300}
                         alt=""
@@ -47,12 +47,14 @@ const SpecialOffers = ({ offers, description }: Props) => {
                       <p>{offer.description}</p>
                       <p className="mt-4">
                         <span className="font-semibold">Wygasa:</span>{" "}
-                        {offer.expiryDate}
+                        {offer.expiryDate || "Brak daty wygaśnięcia"}
                       </p>
-                      <p>
-                        <span className="font-semibold">Cena za osobę:</span>{" "}
-                        {offer.price + " zł"}
-                      </p>
+                      {offer.price ? (
+                        <p>
+                          <span className="font-semibold">Cena za osobę:</span>{" "}
+                          {offer.price + " zł"}
+                        </p>
+                      ) : null}
                     </div>
                   </div>
                 </li>
