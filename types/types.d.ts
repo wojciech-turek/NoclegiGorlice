@@ -5,11 +5,17 @@ interface SanityBody {
   _updatedAt: string;
 }
 
+type Price = {
+  _key: string;
+  peopleCount: number;
+  pricePerPerson: number;
+};
+
 export interface Room extends SanityBody {
   _type: "rooms";
   name: string;
   description: string;
-  price: number;
+  price: Price[];
   bedCount: number;
   bedType: string;
   maxGuests: number;

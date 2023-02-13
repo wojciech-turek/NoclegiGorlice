@@ -19,11 +19,34 @@ export default defineType({
       name: 'location',
       title: 'Lokalizacja',
       type: 'string',
+      options: {
+        list: [
+          {title: 'Stróżówka', value: 'Stróżówka'},
+          {title: 'Gorlice', value: 'Gorlice'},
+        ],
+      },
     }),
     defineField({
       name: 'price',
-      title: 'Cena za noc od osoby',
-      type: 'number',
+      title: 'Cena',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'peopleCount',
+              title: 'Liczba osób',
+              type: 'number',
+            }),
+            defineField({
+              name: 'pricePerPerson',
+              title: 'Cena za osobę',
+              type: 'number',
+            }),
+          ],
+        },
+      ],
     }),
     defineField({
       name: 'bedCount',

@@ -28,7 +28,7 @@ const Hero = ({ pageInfo }: Props) => {
                 {text} <Cursor />
               </span>
             </h1>
-            <p className="mt-6 pr-8 text-lg leading-8 text-gray-600">
+            <p className="mt-6 sm:pr-16 lg:pr-36 text-lg leading-8 text-gray-600">
               {description}
             </p>
             <div className="mt-10 flex items-center gap-x-6">

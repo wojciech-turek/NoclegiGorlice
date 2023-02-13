@@ -26,6 +26,10 @@ const Rooms = ({ rooms, description }: Props) => {
     return room.maxGuests === roomFilter;
   });
 
+  rooms.forEach((room) => {
+    room.price.sort((a, b) => a.peopleCount - b.peopleCount);
+  });
+
   if (!rooms.length) return null;
 
   return (
@@ -43,7 +47,11 @@ const Rooms = ({ rooms, description }: Props) => {
                   type="button"
                   key={roomType.value}
                   onClick={() => {
-                    setRoomFilter(roomType.value);
+                    if (roomFilter === roomType.value) {
+                      setRoomFilter(null);
+                    } else {
+                      setRoomFilter(roomType.value);
+                    }
                   }}
                   className={classNames(
                     roomType.value === roomFilter
@@ -105,8 +113,23 @@ const Rooms = ({ rooms, description }: Props) => {
                     <span className="font-semibold text-yellow-700">
                       Wyposażenie:{" "}
                     </span>
-                    {room.equipment.join(", ")}
+                    {room.equipment?.join(", ")}
                   </p>
+                  <div className="flex gap-1">
+                    <div className="font-semibold text-yellow-700">Cena: </div>
+                    <div>
+                      {room.price.sort() &&
+                        room.price.map((price) => {
+                          return (
+                            <div key={price._key}>
+                              Przy {price.peopleCount}{" "}
+                              {price.peopleCount === 1 ? "osobie" : "osobach"}:{" "}
+                              {price.pricePerPerson} zł / noc / osoba
+                            </div>
+                          );
+                        })}
+                    </div>
+                  </div>
                 </div>
               </div>
               <div
