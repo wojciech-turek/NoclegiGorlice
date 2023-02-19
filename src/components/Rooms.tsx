@@ -40,6 +40,9 @@ const Rooms = ({ rooms, description }: Props) => {
             Pokoje
           </h2>
           <p className="mt-4 text-gray-500">{description}</p>
+          <p className="mt-4 text-gray-500 font-semibold">
+            Istnieje możliwość zakupu śniadań za dopłatą.
+          </p>
           <div className="mt-4 flex gap-4 items-center justify-center">
             {roomTypes.map((roomType) => {
               return (
