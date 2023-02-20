@@ -37,7 +37,7 @@ const Rooms = ({ rooms, description }: Props) => {
       <div className="mx-auto max-w-2xl py-24 px-4 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Pokoje
+            Nasze pokoje
           </h2>
           <p className="mt-4 text-gray-500">{description}</p>
           <p className="mt-4 text-gray-500 font-semibold">
