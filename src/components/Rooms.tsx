@@ -227,8 +227,10 @@ const Rooms = ({ rooms, description }: Props) => {
                         className="aspect-w-5 aspect-h-3 overflow-hidden rounded-lg bg-gray-100"
                       >
                         <Image
-                          width={1920}
-                          height={1080}
+                          width={1024}
+                          height={768}
+                          blurDataURL={getImageUrl(room, i)}
+                          placeholder="blur"
                           src={getImageUrl(room, i)}
                           alt={room.name}
                           className="object-cover object-center"
