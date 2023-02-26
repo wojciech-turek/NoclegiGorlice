@@ -227,13 +227,21 @@ const Rooms = ({ rooms, description }: Props) => {
                         className="aspect-w-5 aspect-h-3 overflow-hidden rounded-lg bg-gray-100"
                       >
                         <Image
+                          priority
                           width={1024}
                           height={768}
-                          blurDataURL={getImageUrl(room, i)}
-                          placeholder="blur"
+                          quality={100}
                           src={getImageUrl(room, i)}
                           alt={room.name}
                           className="object-cover object-center"
+                        />
+                        <Image
+                          src={getImageUrl(room, i + 1)}
+                          alt={room.name}
+                          className="invisible object-cover object-center"
+                          quality={100}
+                          width={1024}
+                          height={768}
                         />
                       </SwiperSlide>
                     ))}
