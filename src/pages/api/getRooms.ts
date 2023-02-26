@@ -17,5 +17,16 @@ export default async function handler(
 ) {
   const rooms: Room[] = await sanityClient.fetch(query);
 
+  // sort rooms by location
+  rooms.sort((a, b) => {
+    if (a.location < b.location) {
+      return -1;
+    }
+    if (a.location > b.location) {
+      return 1;
+    }
+    return 0;
+  });
+
   res.status(200).json({ rooms });
 }

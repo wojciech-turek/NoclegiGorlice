@@ -41,14 +41,14 @@ export default function Home({ pageInfo, attractions, rooms, offers }: Props) {
         <section id="about">
           <About pageInfo={pageInfo} />
         </section>
+        <section id="rooms">
+          <Rooms description={pageInfo.roomsDescription} rooms={rooms} />
+        </section>
         <section id="attractions">
           <Attractions
             description={pageInfo.attractionsDescription}
             attractions={attractions}
           />
-        </section>
-        <section id="rooms">
-          <Rooms description={pageInfo.roomsDescription} rooms={rooms} />
         </section>
         <section id="reviews">
           <Testimonials />

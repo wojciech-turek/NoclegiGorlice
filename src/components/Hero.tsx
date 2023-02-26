@@ -2,7 +2,6 @@ import { urlFor } from "@/lib/sanity.client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { Cursor, useTypewriter } from "react-simple-typewriter";
 import { PageInfo } from "types/types";
 
 type Props = {
@@ -12,11 +11,6 @@ type Props = {
 const Hero = ({ pageInfo }: Props) => {
   const { title, heroImage, locations, description } = pageInfo;
 
-  const [text] = useTypewriter({
-    words: locations,
-    loop: true,
-    delaySpeed: 2000,
-  });
   return (
     <div className="relative bg-white s">
       <div className="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8">
@@ -25,7 +19,7 @@ const Hero = ({ pageInfo }: Props) => {
             <h1 className="mt-6 text-4xl font-bold tracking-tight text-gray-900 sm:mt-10 sm:text-6xl">
               {title} <br />
               <span className="text-yellow-500 block h-24">
-                {text} <Cursor />
+                Stróżówka i Gorlice
               </span>
             </h1>
             <p className="mt-6 sm:pr-16 lg:pr-36 text-lg leading-8 text-gray-600">
