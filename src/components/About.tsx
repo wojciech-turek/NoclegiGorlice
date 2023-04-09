@@ -50,7 +50,7 @@ const About = ({ pageInfo }: Props) => {
         <div className="relative">
           <blockquote className="mt-10">
             <div className="mx-auto max-w-3xl text-center text-2xl font-medium leading-9 text-gray-900">
-              <p>&ldquo;{invitation}&rdquo;</p>
+              <p>{invitation}</p>
             </div>
             <footer className="mt-8">
               <div className="md:flex md:items-center md:justify-center">

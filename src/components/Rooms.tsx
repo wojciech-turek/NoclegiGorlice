@@ -59,10 +59,6 @@ const Rooms = ({ rooms, description }: Props) => {
 
   if (!rooms.length) return null;
 
-  rooms.forEach((room) => {
-    room.price.sort((a, b) => a.peopleCount + b.peopleCount);
-  });
-
   const getImageUrl = (room: Room, imageIndex: number) => {
     try {
       return urlFor(room.images[imageIndex]).url();
@@ -181,19 +177,7 @@ const Rooms = ({ rooms, description }: Props) => {
                     </p>
                     <div className="flex gap-1">
                       <div className="font-semibold text-yellow-700">
-                        Cena:{" "}
-                      </div>
-                      <div>
-                        {room.price.sort() &&
-                          room.price.map((price) => {
-                            return (
-                              <div key={price._key}>
-                                Przy {price.peopleCount}{" "}
-                                {price.peopleCount === 1 ? "osobie" : "osobach"}
-                                : {price.pricePerPerson} zł / noc / osoba
-                              </div>
-                            );
-                          })}
+                        Cena od {room.price} zł za dobę od osoby
                       </div>
                     </div>
                   </div>

@@ -29,24 +29,7 @@ export default defineType({
     defineField({
       name: 'price',
       title: 'Cena',
-      type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            defineField({
-              name: 'peopleCount',
-              title: 'Liczba osób',
-              type: 'number',
-            }),
-            defineField({
-              name: 'pricePerPerson',
-              title: 'Cena za osobę',
-              type: 'number',
-            }),
-          ],
-        },
-      ],
+      type: 'number',
     }),
     defineField({
       name: 'bedCount',

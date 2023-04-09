@@ -14,6 +14,7 @@ import { fetchAttractions } from "@/utils/fetchAttractions";
 import { fetchRooms } from "@/utils/fetchRooms";
 import { fetchOffers } from "@/utils/fetchOffers";
 import Testimonials from "@/components/Testimonials";
+import Parking from "@/components/Parking";
 
 type Props = {
   pageInfo: PageInfo;
@@ -41,6 +42,9 @@ export default function Home({ pageInfo, attractions, rooms, offers }: Props) {
         <section id="about">
           <About pageInfo={pageInfo} />
         </section>
+        <section id="parking">
+          <Parking />
+        </section>
         <section id="rooms">
           <Rooms description={pageInfo.roomsDescription} rooms={rooms} />
         </section>
@@ -50,14 +54,14 @@ export default function Home({ pageInfo, attractions, rooms, offers }: Props) {
             attractions={attractions}
           />
         </section>
-        <section id="reviews">
-          <Testimonials />
-        </section>
         <section id="specialOffers">
           <SpecialOffers
             offers={offers}
             description={pageInfo.offersDescription}
           />
+        </section>
+        <section id="reviews">
+          <Testimonials />
         </section>
         <section id="contact">
           <ContactForm pageInfo={pageInfo} />
