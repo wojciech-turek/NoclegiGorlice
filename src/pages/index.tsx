@@ -76,6 +76,15 @@ export const getStaticProps: GetStaticProps = async () => {
   const pageInfo = await fetchPageInfo();
   const attractions = await fetchAttractions();
   const rooms = await fetchRooms();
+
+  // if room location is Gorlice then move it to the end of the array
+  rooms.sort((a, _) => {
+    if (a.location === "Gorlice") {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
   const offers = await fetchOffers();
   return {
     props: {
